@@ -1,0 +1,33 @@
+[
+    {
+        "persona": "Busy college student",
+        "goal": "Find a quick and affordable meal option near campus.",
+        "product": "Food delivery app",
+        "scenario": "10 minutes before class"
+    },
+    {
+        "persona": "Working professional",
+        "goal": "Book a last-minute flight for a business trip.",
+        "product": "Travel booking website",
+        "scenario": "2 hours before departure"
+    },
+    {
+        "persona": "Fitness enthusiast",
+        "goal": "Track daily workouts and nutrition.",
+        "product": "Fitness tracking app",
+        "scenario": "After morning workout"
+    },
+    {
+        "persona": "Parent of young children",
+        "goal": "Find educational activities for kids on the weekend.",
+        "product": "Family activity planner app",
+        "scenario": "Friday evening"
+    },
+    {
+        "persona": "Retiree",
+        "goal": "Discover local community events and social groups.",
+        "product": "Community engagement platform",
+        "scenario": "Saturday morning"
+    }
+
+]
