@@ -5,11 +5,11 @@ from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import PydanticOutputParser
 
 
-from models.schemas import StoryboardInput, StoryboardOutput, Panel
+from models.schemas import StoryboardInput, StoryboardOutput, Panel, CriticOutput
 from agents.journey_agent import run_journey_agent
 
 from agents.ux_critic_agent import run_critic_agent
-from utils.chroma_setup import basic_retrieve, get_retriever
+from utils.chroma_setup import basic_retrieve
 
 # LLM SET UP
 USE_REMOTE = False
@@ -48,14 +48,14 @@ def display_storyboard(output: StoryboardOutput):
         print("-" * 40)
 
 # function to display the critiques output
-def display_critiques(critic_output):
+def display_critiques(critic_output: CriticOutput):
     print("RAG Chain Response:")
-    parsed = json.loads(critic_output)
-    for c in parsed["critiques"]:
-        print(f"Panel Number: {c['panel']}")
-        print(f"Pain Point: {c['pain_point']}")
-        print(f"Reason: {c['reason']}")
-        print(f"Severity: {c['severity']}")
+    #parsed = json.loads(critic_output)
+    for c in critic_output.critiques:
+        print(f"Panel Number: {c.panel}")
+        print(f"Pain Point: {c.pain_point}")
+        print(f"Reason: {c.reason}")
+        print(f"Severity: {c.severity}")
         print("-" * 40)
 
 # ENTRY POINT
@@ -63,11 +63,20 @@ if __name__ == "__main__":
     chat_model = get_chat_model()
     user_input = collect_input()
  
+    # Generating Storyboard
+    print("==" *60)
     print("\nGenerating storyboard...\n")
+    print("==" *60)
     output = run_journey_agent(user_input, chat_model)
     display_storyboard(output)
+
+    # Pulling documents
     print("\nRetrieving relevant documentation...\n")
     retrieved_docs = basic_retrieve(output.panels, top_k=5)
+
+    # Critiquing storyboard output
+    print("==" *60)
     print("\nRunning UX Critic Agent...\n")
+    print("==" *60)
     critic_output = run_critic_agent(output.panels, retrieved_docs, chat_model)
     display_critiques(critic_output)
