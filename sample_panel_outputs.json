@@ -1,0 +1,51 @@
+[
+  {
+    "panels": [
+      {"panel_number": 1, "action": "Opens travel booking website on laptop", "context": "Office desk, 2 hours before flight", "emotion": "Anxious"},
+      {"panel_number": 2, "action": "Searches for available flights departing in 2 hours", "context": "Search results loading slowly", "emotion": "Stressed"},
+      {"panel_number": 3, "action": "Filters results by departure time and price", "context": "Too many irrelevant results shown", "emotion": "Frustrated"},
+      {"panel_number": 4, "action": "Selects flight and proceeds to checkout", "context": "Forced to create an account before booking", "emotion": "Annoyed"},
+      {"panel_number": 5, "action": "Enters payment details", "context": "Unclear error on credit card field", "emotion": "Confused"},
+      {"panel_number": 6, "action": "Receives booking confirmation", "context": "Confirmation email arrives instantly", "emotion": "Relieved"}
+    ]
+  },
+  {
+    "panels": [
+      {"panel_number": 1, "action": "Opens job listing app on phone", "context": "Sitting in hallway between classes", "emotion": "Hopeful"},
+      {"panel_number": 2, "action": "Searches for part-time jobs near campus", "context": "No filter for hours or distance available", "emotion": "Confused"},
+      {"panel_number": 3, "action": "Scrolls through irrelevant full-time listings", "context": "Small screen, dense list with no clear labels", "emotion": "Frustrated"},
+      {"panel_number": 4, "action": "Taps on a relevant listing to read details", "context": "Page takes long to load on campus wifi", "emotion": "Impatient"},
+      {"panel_number": 5, "action": "Hits apply button", "context": "Redirected to external site requiring resume upload", "emotion": "Overwhelmed"}
+    ]
+  },
+  {
+    "panels": [
+      {"panel_number": 1, "action": "Navigates to hospital website from email link", "context": "Desktop browser, large monitor", "emotion": "Uncertain"},
+      {"panel_number": 2, "action": "Tries to find the appointment scheduling page", "context": "Navigation menu has too many options", "emotion": "Confused"},
+      {"panel_number": 3, "action": "Clicks wrong link and lands on billing page", "context": "No clear back button visible", "emotion": "Frustrated"},
+      {"panel_number": 4, "action": "Eventually finds scheduling page after searching", "context": "Search bar returns unhelpful results", "emotion": "Relieved"},
+      {"panel_number": 5, "action": "Fills out appointment form", "context": "Small font, unclear required fields", "emotion": "Stressed"},
+      {"panel_number": 6, "action": "Submits form successfully", "context": "Confirmation message appears briefly then disappears", "emotion": "Unsure"}
+    ]
+  },
+  {
+    "panels": [
+      {"panel_number": 1, "action": "Opens grocery app on phone", "context": "Limited time during lunch break", "emotion": "Rushed"},
+      {"panel_number": 2, "action": "Searches for specific brand of cereal", "context": "Search returns generic results not matching brand", "emotion": "Annoyed"},
+      {"panel_number": 3, "action": "Adds items to cart", "context": "App keeps suggesting sponsored products", "emotion": "Distracted"},
+      {"panel_number": 4, "action": "Proceeds to checkout", "context": "Minimum order amount not met, shown at checkout only", "emotion": "Frustrated"},
+      {"panel_number": 5, "action": "Adds extra item to meet minimum", "context": "Delivery time slots all taken for today", "emotion": "Disappointed"},
+      {"panel_number": 6, "action": "Schedules delivery for next day", "context": "Confirmation sent to email", "emotion": "Resigned"}
+    ]
+  },
+  {
+    "panels": [
+      {"panel_number": 1, "action": "Logs into invoicing tool", "context": "Home office, end of month deadline pressure", "emotion": "Focused"},
+      {"panel_number": 2, "action": "Creates a new invoice", "context": "Template options are unclear and unlabeled", "emotion": "Confused"},
+      {"panel_number": 3, "action": "Fills in client details and line items", "context": "Tax field behavior is unclear", "emotion": "Uncertain"},
+      {"panel_number": 4, "action": "Previews invoice before sending", "context": "Preview looks different from final PDF", "emotion": "Concerned"},
+      {"panel_number": 5, "action": "Sends invoice to client via email", "context": "No confirmation that email was delivered", "emotion": "Anxious"},
+      {"panel_number": 6, "action": "Checks sent folder to verify", "context": "No sent history visible in the tool", "emotion": "Frustrated"}
+    ]
+  }
+]

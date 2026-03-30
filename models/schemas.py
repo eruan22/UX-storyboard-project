@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List, Literal
 
 # create input schema for Journey Agent
 class StoryboardInput(BaseModel):
@@ -30,3 +30,22 @@ class StoryboardOutput(BaseModel):
     """Output schema for the StoryboardAgent."""
     panels: List[Panel] = Field(..., description = "A list of panels that make up the storyboard, " \
     "each describing a step in the user's journey towards their goal.")
+
+# create critic input for UX Critic Agent
+class CriticInput(BaseModel):
+    """Input to the Critic Agent"""
+    panels: List[Panel] = Field(..., description="List of UI panels to critique")
+    retrieved_docs: List[str] = Field(..., description="Relevant documentation snippets retrieved from the vector store")
+
+# create critic output panel for UX Critic Agent
+class PanelCritique(BaseModel):
+    """Panel output from the Critic Agent"""
+    panel_number: int = Field(..., description="Index of the panel being critiqued")
+    pain_point: str = Field(..., description="Description of the identified pain point")
+    reason: str = Field(..., description="Explanation of why this is a pain point based on the retrieved documentation")
+    severity: Literal["Low", "Medium", "High"] = Field(..., description="Severity of the pain point based on the documentation and potential user impact")
+
+# create critic output for UX Critic Agent
+class CriticOutput(BaseModel):
+    """Output from the Critic Agent"""
+    critiques: List[PanelCritique] = Field(..., description="List of critiques for each panel")
