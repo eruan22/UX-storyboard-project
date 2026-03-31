@@ -5,10 +5,11 @@ from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import PydanticOutputParser
 
 
-from models.schemas import StoryboardInput, StoryboardOutput, Panel, CriticOutput
+from models.schemas import StoryboardInput, StoryboardOutput, Panel, CriticOutput, PanelCritique, DesignOutput, DesignRecommendation
 from agents.journey_agent import run_journey_agent
 
 from agents.ux_critic_agent import run_critic_agent
+from agents.design_agent import run_design_agent
 from utils.chroma_setup import basic_retrieve
 
 # LLM SET UP
@@ -58,6 +59,15 @@ def display_critiques(critic_output: CriticOutput):
         print(f"Severity: {c.severity}")
         print("-" * 40)
 
+# function to display the recommendations output
+def display_recommendations(design_output: DesignOutput):
+    print("Design Recommendations:")
+    for r in design_output.recommendations:
+        print(f"Panel Number: {r.panel}")
+        print(f"Pain Point: {r.pain_point}")
+        print(f"Recommnedation: {r.recommendation}")
+        print("-" * 40)
+
 # ENTRY POINT
 if __name__ == "__main__":
     chat_model = get_chat_model()
@@ -80,3 +90,9 @@ if __name__ == "__main__":
     print("==" *60)
     critic_output = run_critic_agent(output.panels, retrieved_docs, chat_model)
     display_critiques(critic_output)
+
+    # Generating design recommendations
+    print("\nGenerating design recommendations...\n")
+    print("==" *60)
+    design_output = run_design_agent(output, critic_output, chat_model)
+    display_recommendations(design_output)

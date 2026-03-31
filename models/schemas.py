@@ -31,12 +31,6 @@ class StoryboardOutput(BaseModel):
     panels: List[Panel] = Field(..., description = "A list of panels that make up the storyboard, " \
     "each describing a step in the user's journey towards their goal.")
 
-# create critic input for UX Critic Agent
-# class CriticInput(BaseModel):
-#     """Input to the Critic Agent"""
-#     panels: List[Panel] = Field(..., description="List of UI panels to critique")
-#     retrieved_docs: List[str] = Field(..., description="Relevant documentation snippets retrieved from the vector store")
-
 # create critic output panel for UX Critic Agent
 class PanelCritique(BaseModel):
     """Panel output from the Critic Agent"""
@@ -49,3 +43,15 @@ class PanelCritique(BaseModel):
 class CriticOutput(BaseModel):
     """Output from the Critic Agent"""
     critiques: List[PanelCritique] = Field(..., description="List of critiques for each panel")
+
+# create design recommendation output for Design Agent
+class DesignRecommendation(BaseModel):
+    """Structured design recommendation output from the Design Agent"""
+    panel: int = Field(..., description="The panel number that this recommendation applies to")
+    pain_point: str = Field(..., description="The specific pain point identified in the panel")
+    recommendation: str = Field(..., description="The design recommendation to address the pain point")
+
+# create design agent ouput schema
+class DesignOutput(BaseModel):
+    """Sturctured output from the Design Agent"""
+    recommendations: List[DesignRecommendation] = Field(..., description="A list of design recommendations to improve the storyboard")

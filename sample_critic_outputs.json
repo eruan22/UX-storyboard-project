@@ -1,0 +1,160 @@
+[
+  {
+    "critiques": [
+      {
+        "panel": 1,
+        "pain_point": "No urgency indicators on the homepage for last-minute bookings",
+        "reason": "Users under time pressure need critical actions surfaced immediately. The homepage does not prioritize urgent booking flows, increasing cognitive load.",
+        "severity": "High"
+      },
+      {
+        "panel": 2,
+        "pain_point": "Search results load slowly, increasing user stress",
+        "reason": "Slow feedback violates Nielsen's visibility of system status heuristic. Users under time pressure will abandon if they cannot see progress.",
+        "severity": "High"
+      },
+      {
+        "panel": 3,
+        "pain_point": "No filter for departure time within the next 2 hours",
+        "reason": "Lack of relevant filtering forces users to scan irrelevant results, increasing cognitive load and frustration during an urgent task.",
+        "severity": "Medium"
+      },
+      {
+        "panel": 4,
+        "pain_point": "Forced account creation before completing booking",
+        "reason": "Mandatory registration is a known friction point that causes drop-offs. Baymard research identifies it as a top reason for checkout abandonment.",
+        "severity": "High"
+      },
+      {
+        "panel": 5,
+        "pain_point": "Unclear error message on credit card field",
+        "reason": "Vague error messages violate Nielsen's error message heuristic. Users cannot recover efficiently without knowing exactly what went wrong.",
+        "severity": "Medium"
+      }
+    ]
+  },
+  {
+    "critiques": [
+      {
+        "panel": 1,
+        "pain_point": "App provides no filter for part-time or flexible hours",
+        "reason": "Without relevant filters, users must manually scan all listings. This creates unnecessary cognitive load and poor findability for a specific user need.",
+        "severity": "High"
+      },
+      {
+        "panel": 2,
+        "pain_point": "Job listings are dense with no clear visual hierarchy",
+        "reason": "Poor visual hierarchy on a small screen forces users to read every listing rather than scan. This violates mobile usability guidelines for information density.",
+        "severity": "Medium"
+      },
+      {
+        "panel": 3,
+        "pain_point": "Page load time is too slow on campus wifi",
+        "reason": "Slow load times on mobile violate system status feedback principles. Users on intermittent connections need lightweight pages and loading indicators.",
+        "severity": "High"
+      },
+      {
+        "panel": 4,
+        "pain_point": "Redirecting to an external site for application breaks the flow",
+        "reason": "Sending users to a third-party site mid-task creates a jarring context switch. This friction point often causes abandonment before application completion.",
+        "severity": "High"
+      }
+    ]
+  },
+  {
+    "critiques": [
+      {
+        "panel": 1,
+        "pain_point": "Navigation menu has too many options causing decision paralysis",
+        "reason": "Hick's Law states that more choices increases decision time. For elderly first-time users, an overwhelming nav menu significantly raises cognitive load.",
+        "severity": "High"
+      },
+      {
+        "panel": 2,
+        "pain_point": "No clear back button visible after wrong navigation",
+        "reason": "Nielsen's heuristic for user control requires clear undo and back options. Trapping users on the wrong page causes frustration and loss of confidence.",
+        "severity": "High"
+      },
+      {
+        "panel": 3,
+        "pain_point": "Search returns unhelpful results for appointment scheduling",
+        "reason": "Poor search relevance forces users to browse manually. For elderly users unfamiliar with the system, failed search is a critical failure point.",
+        "severity": "Medium"
+      },
+      {
+        "panel": 4,
+        "pain_point": "Form uses small font and unclear required field indicators",
+        "reason": "Small text and ambiguous required fields violate accessibility guidelines. WCAG requires sufficient contrast and clear labeling for form inputs.",
+        "severity": "High"
+      },
+      {
+        "panel": 5,
+        "pain_point": "Confirmation message disappears too quickly",
+        "reason": "Transient feedback without persistence leaves users uncertain whether their action succeeded. This violates system status visibility and causes repeat submissions.",
+        "severity": "Medium"
+      }
+    ]
+  },
+  {
+    "critiques": [
+      {
+        "panel": 1,
+        "pain_point": "No indication of minimum order amount before checkout",
+        "reason": "Hiding constraints until checkout is a deceptive pattern that damages trust. Users should know order requirements upfront to avoid wasted effort.",
+        "severity": "High"
+      },
+      {
+        "panel": 2,
+        "pain_point": "Search does not return brand-specific results",
+        "reason": "Poor search relevance forces users to browse manually. When users have a specific item in mind, failed search directly causes task abandonment.",
+        "severity": "Medium"
+      },
+      {
+        "panel": 3,
+        "pain_point": "Sponsored product suggestions distract from the user's task",
+        "reason": "Interrupting a focused task flow with promotions increases cognitive load and diverts attention. This is especially disruptive for time-pressured users.",
+        "severity": "Low"
+      },
+      {
+        "panel": 4,
+        "pain_point": "Delivery time slots unavailable with no earlier warning",
+        "reason": "Revealing slot unavailability only at checkout wastes user effort and causes frustration. Availability should be surfaced at the start of the flow.",
+        "severity": "High"
+      }
+    ]
+  },
+  {
+    "critiques": [
+      {
+        "panel": 1,
+        "pain_point": "Invoice template options are unlabeled and visually unclear",
+        "reason": "Unlabeled UI elements violate recognition over recall principles. Users should not need to guess what each template does before selecting one.",
+        "severity": "Medium"
+      },
+      {
+        "panel": 2,
+        "pain_point": "Tax field behavior is ambiguous with no inline explanation",
+        "reason": "Ambiguous form fields cause errors and slow task completion. Inline help text or tooltips would reduce uncertainty without disrupting the flow.",
+        "severity": "Medium"
+      },
+      {
+        "panel": 3,
+        "pain_point": "Invoice preview does not match the final PDF output",
+        "reason": "Inconsistency between preview and output violates the match between system and real world heuristic, eroding user trust in the tool.",
+        "severity": "High"
+      },
+      {
+        "panel": 4,
+        "pain_point": "No confirmation that the invoice email was delivered",
+        "reason": "Lack of delivery feedback violates system status visibility. Users need confirmation that a business-critical action completed successfully.",
+        "severity": "High"
+      },
+      {
+        "panel": 5,
+        "pain_point": "No sent history visible in the invoicing tool",
+        "reason": "Without a sent history, users cannot verify past actions or recover from errors. This creates anxiety around business-critical communications.",
+        "severity": "High"
+      }
+    ]
+  }
+]
