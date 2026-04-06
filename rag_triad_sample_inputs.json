@@ -1,0 +1,122 @@
+[
+    {
+        "persona": "Busy college student",
+        "goal": "Find a quick and affordable meal option near campus.",
+        "product": "Food delivery app",
+        "scenario": "10 minutes before class"
+    },
+    {
+        "persona": "Working professional",
+        "goal": "Book a last-minute flight for a business trip.",
+        "product": "Travel booking website",
+        "scenario": "2 hours before departure"
+    },
+    {
+        "persona": "Fitness enthusiast",
+        "goal": "Track daily workouts and nutrition.",
+        "product": "Fitness tracking app",
+        "scenario": "After morning workout"
+    },
+    {
+        "persona": "Parent of young children",
+        "goal": "Find educational activities for kids on the weekend.",
+        "product": "Family activity planner app",
+        "scenario": "Friday evening"
+    },
+    {
+        "persona": "Retiree",
+        "goal": "Discover local community events and social groups.",
+        "product": "Community engagement platform",
+        "scenario": "Saturday morning"
+    },
+    {
+        "persona": "Remote worker",
+        "goal": "Find a quiet and comfortable co-working space nearby.",
+        "product": "Co-working space finder app",
+        "scenario": "Monday morning"
+    },
+    {
+        "persona": "Traveler",
+        "goal": "Get recommendations for local attractions and dining options.",
+        "product": "Travel guide app",
+        "scenario": "Arriving in a new city"
+    },
+    {
+        "persona": "Student athlete",
+        "goal": "Manage training schedule and recovery routines.",
+        "product": "Athlete performance app",
+        "scenario": "After practice session"
+    },
+    {
+        "persona": "Tech enthusiast",
+        "goal": "Stay updated on the latest gadgets and tech news.",
+        "product": "Tech news aggregator app",
+        "scenario": "During commute"
+    },
+    {
+        "persona": "Small business owner",
+        "goal": "Find affordable marketing tools and resources.",
+        "product": "Small business toolkit app",
+        "scenario": "Planning next quarter's strategy"
+    },
+    {
+        "persona": "Music lover",
+        "goal": "Discover new artists and create personalized playlists.",
+        "product": "Music streaming app",
+        "scenario": "Relaxing at home"
+    },
+    {
+        "persona": "Gamer",
+        "goal": "Find new games to play and connect with other gamers.",
+        "product": "Gaming community app",
+        "scenario": "Looking for weekend gaming sessions"
+    },
+    {
+        "persona": "Health-conscious individual",
+        "goal": "Find healthy recipes and meal planning ideas.",
+        "product": "Healthy eating app",
+        "scenario": "Planning meals for the week"
+    },
+    {
+        "persona": "Frequent traveler",
+        "goal": "Keep track of travel itineraries and important documents.",
+        "product": "Travel organizer app",
+        "scenario": "Preparing for an upcoming trip"
+    },
+    {
+        "persona": "Language learner",
+        "goal": "Practice language skills and find conversation partners.",
+        "product": "Language learning app",
+        "scenario": "During daily commute"
+    },
+    {
+        "persona": "DIY enthusiast",
+        "goal": "Find project ideas and step-by-step guides.",
+        "product": "DIY project app",
+        "scenario": "Looking for weekend projects"
+    },
+    {
+        "persona": "Pet owner",
+        "goal": "Find pet care tips and local pet services.",
+        "product": "Pet care app",
+        "scenario": "Planning a trip and need pet care"
+    },
+    {
+        "persona": "Eco-conscious consumer",
+        "goal": "Find sustainable products and eco-friendly brands.",
+        "product": "Sustainable shopping app",
+        "scenario": "Looking for gift ideas"
+    },
+    {
+        "persona": "Book lover",
+        "goal": "Discover new books and connect with other readers.",
+        "product": "Book recommendation app",
+        "scenario": "Looking for weekend reading material"
+    },
+    {
+        "persona": "Artist",
+        "goal": "Find inspiration and connect with other artists.",
+        "product": "Art community app",
+        "scenario": "Seeking creative inspiration"
+    }
+]
