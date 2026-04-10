@@ -3,7 +3,7 @@ import json
 
 from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import PydanticOutputParser
-from utils.chroma_setup import get_vectorstore, basic_retrieve
+from utils.chroma_setup import basic_retrieve
 from utils.rag_triad import run_rag_triad
 from agents.journey_agent import run_journey_agent
 from agents.ux_critic_agent import run_critic_agent
@@ -29,26 +29,22 @@ llm = ChatOllama(
 with open("rag_triad_sample_inputs.json", "r") as f:
     SAMPLE_INPUTS = json.load(f)
 
-#SET UP
-vectorstore = get_vectorstore()
-
 # run RAG triad evaluation
 triad_results = []
 for i, sample in enumerate(SAMPLE_INPUTS):
     print(f"--Running RAG triad evaluation for sample {i+1}--")
 
     # journey agent
-    user_input = StoryboardInput(**sample["user_input"])
+    print("Running Journey Agent...")
+    user_input = StoryboardInput(**sample)
     storyboard_output = run_journey_agent(user_input, chat_model)
 
     # retrieve docs
-    retrieved_docs = basic_retrieve(vectorstore, user_input)
+    retrieved_docs = basic_retrieve(storyboard_output.panels, top_k=5)
 
     # critic agent
+    print("\nRunning Critic Agent...")
     critic_output = run_critic_agent(storyboard_output.panels, retrieved_docs, chat_model)
-
-    # design agent
-    design_output = run_design_agent(critic_output, chat_model)
 
     # run RAG triad evaluation
     triad_result = run_rag_triad(storyboard_output.panels, retrieved_docs, critic_output, chat_model)

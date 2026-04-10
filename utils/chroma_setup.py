@@ -1,3 +1,5 @@
+import os
+
 from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from typing import List
@@ -30,21 +32,44 @@ from langchain_ollama import OllamaEmbeddings
 CHROMA_PATH = "./data/chroma_db"
 COLLECTION = "ux-research-docs"
 
-# load and chunk your PDFs
-chunks = load_pdfs("UX-documents")
+# vector store function
+def get_vectorstore():
+    """Initialize ChromaDB vector store with Ollama embeddings."""
+    # get embeddings
+    embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
+    # reduce runtime if already loaded
+    if os.path.exists(CHROMA_PATH):
+        print("Loading existing ChromaDB...")
+        return Chroma(
+            collection_name=COLLECTION,
+            embedding_function=embeddings,
+            persist_directory=CHROMA_PATH
+        )
+    # load and chunk your PDFs
+    chunks = load_pdfs("UX-documents")
+
+    # build vector store with ChromaDB
+    vector_store = Chroma(
+        collection_name = COLLECTION,
+        embedding_function = embeddings,
+        persist_directory = CHROMA_PATH
+    )
+
+    vector_store.add_documents(chunks)
+    return vector_store
 # get embeddings
-embeddings = OllamaEmbeddings(model="nomic-embed-text")
+# embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
 
-# build vector store with ChromaDB
-vector_store = Chroma(
-    collection_name = COLLECTION,
-    embedding_function = embeddings,
-    persist_directory = CHROMA_PATH
-)
+# # build vector store with ChromaDB
+# vector_store = Chroma(
+#     collection_name = COLLECTION,
+#     embedding_function = embeddings,
+#     persist_directory = CHROMA_PATH
+# )
 
-vector_store.add_documents(chunks)
+# vector_store.add_documents(chunks)
 
 # BASIC RETRIEVE FUNCTION
 def basic_retrieve(panels: List[Panel], top_k: int) -> List[str]:
@@ -57,6 +82,7 @@ def basic_retrieve(panels: List[Panel], top_k: int) -> List[str]:
     Returns:
         List of dictionaries with 'content', 'metadata', and 'score' keys"""
     # initialize retriever
+    vector_store = get_vectorstore()
     retriever = vector_store.as_retriever(search_kwargs={"k": top_k})
     # combine panel content into a single query
     query = " ".join([f"{panel.action} {panel.context}" for panel in panels])

@@ -10,7 +10,7 @@ from agents.journey_agent import run_journey_agent
 
 from agents.ux_critic_agent import run_critic_agent
 from agents.design_agent import run_design_agent
-from utils.chroma_setup import basic_retrieve
+from utils.chroma_setup import basic_retrieve, get_vectorstore
 
 # LLM SET UP
 USE_REMOTE = False

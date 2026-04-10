@@ -21,7 +21,7 @@ def build_design_chain(chat_model):
             These are the pain points identified in each panel:
             {pain_points}
             For each pain point, provide a specific, actionable design recommendation.
-            Format your response as JSON with this structure:
+            Format your response as ONLY JSON with this structure:
             {{
                 "recommendations":[
                     {{
