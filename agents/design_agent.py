@@ -53,10 +53,11 @@ def format_pain_points(critic_output:CriticOutput) -> str:
     ])
 
 # RUN DESIGN AGENT CHAIN
-def run_design_agent(storyboard_output: StoryboardOutput, critic_output: CriticOutput, chat_model) -> DesignOutput:
+def run_design_agent(panels: List[Panel], critic_output: CriticOutput, chat_model) -> DesignOutput:
     chain = build_design_chain(chat_model)
     response = chain.invoke({
-        "panels": format_panels(storyboard_output.panels),
+        "panels": format_panels(panels),
         "pain_points": format_pain_points(critic_output)
     })
+    print("design agent finished!")
     return response

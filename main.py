@@ -13,16 +13,16 @@ from agents.design_agent import run_design_agent
 from utils.chroma_setup import basic_retrieve, get_vectorstore
 
 # LLM SET UP
-USE_REMOTE = False
+USE_REMOTE = True
 sys.path.insert(0, '../inclass')
 from llm_utils import get_llm, get_chat_model
 
-model = get_llm(use_remote=USE_REMOTE, model="qwen3:4b")
-chat_model = get_chat_model(use_remote=USE_REMOTE, model="qwen3:4b")
+model = get_llm(use_remote=USE_REMOTE, model="qwen3.5:4b")
+chat_model = get_chat_model(use_remote=USE_REMOTE, model="qwen3.5:4b")
 
 # initialize LLM
 llm = ChatOllama(
-    model="qwen-3:4b",
+    model="qwen3.5:4b",
     temperature=0.7,
     #base_url=OLLAMA_BASE_URL
 )
@@ -94,5 +94,5 @@ if __name__ == "__main__":
     # Generating design recommendations
     print("\nGenerating design recommendations...\n")
     print("==" *60)
-    design_output = run_design_agent(output, critic_output, chat_model)
+    design_output = run_design_agent(output.panels, critic_output, chat_model)
     display_recommendations(design_output)

@@ -44,4 +44,5 @@ def run_journey_agent(user_input: StoryboardInput, chat_model) -> StoryboardOutp
                                 "goal": user_input.goal, 
                                 "product": user_input.product, 
                                 "scenario": user_input.scenario})
+    print("journey agent finished!")
     return result

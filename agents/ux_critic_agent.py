@@ -56,4 +56,5 @@ def run_critic_agent(panels: List[Panel], retrieved_docs: List[str], chat_model)
     })
     parsed = json.loads(response)
     critiques = [PanelCritique(**c) for c in parsed["critiques"]]
+    print("ux critic agent finished!")
     return CriticOutput(critiques=critiques)
