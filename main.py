@@ -70,7 +70,6 @@ def display_recommendations(design_output: DesignOutput):
 
 # ENTRY POINT
 if __name__ == "__main__":
-    chat_model = get_chat_model()
     user_input = collect_input()
  
     # Generating Storyboard
@@ -82,7 +81,8 @@ if __name__ == "__main__":
 
     # Pulling documents
     print("\nRetrieving relevant documentation...\n")
-    retrieved_docs = basic_retrieve(output.panels, top_k=5)
+    vector_store = get_vectorstore()
+    retrieved_docs = basic_retrieve(output.panels, vector_store, top_k=5)
 
     # Critiquing storyboard output
     print("==" *60)

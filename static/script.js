@@ -6,6 +6,7 @@ document.getElementById("example-btn").addEventListener("click", () => {
     document.getElementById("scenario").value = "2 hours before departure";
 });
 
+// generate button
 document.getElementById("generate-btn").addEventListener("click", async () => {
     const persona  = document.getElementById("persona").value.trim();
     const goal     = document.getElementById("goal").value.trim();
@@ -17,87 +18,60 @@ document.getElementById("generate-btn").addEventListener("click", async () => {
         return;
     }
 
-    // show loading
+    // show loading, hide results
     document.getElementById("loading").classList.remove("hidden");
     document.getElementById("storyboard-section").classList.add("hidden");
     document.getElementById("critique-section").classList.add("hidden");
     document.getElementById("recommendations-section").classList.add("hidden");
 
-    const response = await fetch("/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ persona, goal, product, scenario })
-    });
+    try {
+        const response = await fetch("/generate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ persona, goal, product, scenario })
+        });
 
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
+        const data = await response.json();
 
-    while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+        // render panels
+        const panelsContainer = document.getElementById("panels-container");
+        panelsContainer.innerHTML = data.panels.map(p => `
+            <div class="panel-card">
+                <h4>Panel ${p.panel_number}</h4>
+                <p><strong>Action:</strong> ${p.action}</p>
+                <p><strong>Context:</strong> ${p.context}</p>
+                <p><strong>Emotion:</strong> ${p.emotion}</p>
+            </div>
+        `).join("");
 
-        const text = decoder.decode(value);
-        const lines = text.split("\n").filter(l => l.startsWith("data: "));
+        // render critiques
+        const critiquesContainer = document.getElementById("critiques-container");
+        critiquesContainer.innerHTML = data.critiques.map(c => `
+            <div class="critique-card ${c.severity}">
+                <span class="severity-badge">${c.severity}</span>
+                <p><strong>Panel ${c.panel}:</strong> ${c.pain_point}</p>
+                <p>${c.reason}</p>
+            </div>
+        `).join("");
 
-        for (const line of lines) {
-            const json_data = JSON.parse(line.replace("data: ", ""));
+        // render recommendations
+        const recsContainer = document.getElementById("recommendations-container");
+        recsContainer.innerHTML = data.recommendations.map(r => `
+            <div class="rec-card">
+                <p><strong>Panel ${r.panel}:</strong> ${r.pain_point}</p>
+                <p>${r.recommendation}</p>
+            </div>
+        `).join("");
 
-            if (json_data.type === "panels") {
-                renderPanels(json_data.data);
-                document.getElementById("storyboard-section").classList.remove("hidden");
-                document.getElementById("loading").innerHTML = `
-                    <div class="spinner"></div>
-                    <p>Running UX Critic...</p>
-                `;
-            }
+        // show results
+        document.getElementById("storyboard-section").classList.remove("hidden");
+        document.getElementById("critique-section").classList.remove("hidden");
+        document.getElementById("recommendations-section").classList.remove("hidden");
 
-            if (json_data.type === "critiques") {
-                renderCritiques(json_data.data);
-                document.getElementById("critique-section").classList.remove("hidden");
-                document.getElementById("loading").innerHTML = `
-                    <div class="spinner"></div>
-                    <p>Generating recommendations...</p>
-                `;
-            }
-
-            if (json_data.type === "recommendations") {
-                renderRecommendations(json_data.data);
-                document.getElementById("recommendations-section").classList.remove("hidden");
-            }
-
-            if (json_data.type === "done") {
-                document.getElementById("loading").classList.add("hidden");
-            }
-        }
+    } catch (err) {
+        alert("Something went wrong. Check the terminal for errors.");
+        console.error(err);
+    } finally {
+        document.getElementById("loading").classList.add("hidden");
     }
 });
-
-function renderPanels(panels) {
-    document.getElementById("panels-container").innerHTML = panels.map(p => `
-        <div class="panel-card">
-            <h4>Panel ${p.panel_number}</h4>
-            <p><strong>Action:</strong> ${p.action}</p>
-            <p><strong>Context:</strong> ${p.context}</p>
-            <p><strong>Emotion:</strong> ${p.emotion}</p>
-        </div>
-    `).join("");
-}
-
-function renderCritiques(critiques) {
-    document.getElementById("critiques-container").innerHTML = critiques.map(c => `
-        <div class="critique-card ${c.severity}">
-            <span class="severity-badge">${c.severity}</span>
-            <p><strong>Panel ${c.panel}:</strong> ${c.pain_point}</p>
-            <p>${c.reason}</p>
-        </div>
-    `).join("");
-}
-
-function renderRecommendations(recs) {
-    document.getElementById("recommendations-container").innerHTML = recs.map(r => `
-        <div class="rec-card">
-            <p><strong>Panel ${r.panel}:</strong> ${r.pain_point}</p>
-            <p>${r.recommendation}</p>
-        </div>
-    `).join("");
-}

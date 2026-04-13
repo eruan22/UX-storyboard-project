@@ -5,7 +5,7 @@ from models.schemas import StoryboardInput
 from agents.journey_agent import run_journey_agent
 from agents.ux_critic_agent import run_critic_agent
 from agents.design_agent import run_design_agent
-from utils.chroma_setup import basic_retrieve
+from utils.chroma_setup import basic_retrieve, get_vectorstore
 
 app = Flask(__name__)
 
@@ -46,7 +46,8 @@ def generate():
     storyboard_output = run_journey_agent(user_input, chat_model)
 
     # step 3: retrieve docs
-    retrieved_docs = basic_retrieve(storyboard_output.panels, top_k=5)
+    vector_store = get_vectorstore()
+    retrieved_docs = basic_retrieve(storyboard_output.panels, vector_store, top_k=5)
 
     # step 4: critic agent
     critic_output = run_critic_agent(storyboard_output.panels, retrieved_docs, chat_model)

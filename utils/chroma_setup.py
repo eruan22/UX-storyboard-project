@@ -72,7 +72,7 @@ def get_vectorstore():
 # vector_store.add_documents(chunks)
 
 # BASIC RETRIEVE FUNCTION
-def basic_retrieve(panels: List[Panel], top_k: int) -> List[str]:
+def basic_retrieve(panels: List[Panel], vector_store, top_k: int) -> List[str]:
     """Retrieve the top k most similar documents for a query.
 
     Args:
@@ -82,7 +82,6 @@ def basic_retrieve(panels: List[Panel], top_k: int) -> List[str]:
     Returns:
         List of dictionaries with 'content', 'metadata', and 'score' keys"""
     # initialize retriever
-    vector_store = get_vectorstore()
     retriever = vector_store.as_retriever(search_kwargs={"k": top_k})
     # combine panel content into a single query
     query = " ".join([f"{panel.action} {panel.context}" for panel in panels])
