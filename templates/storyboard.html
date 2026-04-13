@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Storyboard — UX Generator</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #0f0e0c;
+      --paper:  #f5f0e8;
+      --accent: #d4580a;
+      --muted:  #7a7060;
+      --border: #ccc5b2;
+      --panel-bg: #fff9f0;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      min-height: 100vh;
+      padding: 48px 20px 80px;
+    }
+
+    /* ── page header ── */
+    .page-header {
+      max-width: 900px;
+      margin: 0 auto 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      letter-spacing: -0.02em;
+    }
+
+    .page-header h1 span { color: var(--accent); }
+
+    .meta {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.9;
+      text-align: right;
+    }
+
+    /* ── pipeline ── */
+    .pipeline {
+      max-width: 900px;
+      margin: 0 auto 36px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .pipeline .step {
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: var(--panel-bg);
+    }
+
+    .pipeline .step.done   { border-color: var(--accent); color: var(--accent); text-decoration: line-through; opacity: 0.6; }
+    .pipeline .step.active { border-color: var(--accent); color: var(--accent); background: #fdf3ec; font-weight: bold; }
+    .pipeline .arrow { color: var(--border); font-size: 14px; }
+
+    /* ── storyboard grid ── */
+    .storyboard-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 640px) {
+      .storyboard-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── individual panel card ── */
+    .panel-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      box-shadow: 3px 3px 0 var(--border);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      background: var(--ink);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+    }
+
+    .panel-number {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      opacity: 0.6;
+    }
+
+    .panel-body {
+      padding: 16px 18px 20px;
+    }
+
+    .panel-field {
+      margin-bottom: 13px;
+    }
+
+    .panel-field:last-child { margin-bottom: 0; }
+
+    .field-label {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .field-value {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .emotion-badge {
+      display: inline-block;
+      padding: 2px 9px;
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-style: italic;
+    }
+
+    /* ── action section ── */
+    .action-section {
+      max-width: 900px;
+      margin: 36px auto 0;
+      padding: 28px 32px;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .action-section p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      padding: 13px 28px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn:hover { background: #b84b06; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover { background: var(--border); color: var(--ink); }
+
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <h1>User <span>Storyboard</span></h1>
+    <div class="meta">
+      <div>Persona: {{ persona }}</div>
+      <div>Goal: {{ goal }}</div>
+      <div>Product: {{ product }}</div>
+    </div>
+  </div>
+
+  <!-- pipeline -->
+  <div class="pipeline">
+    <span class="step done">① Input</span>
+    <span class="arrow">→</span>
+    <span class="step active">② Storyboard</span>
+    <span class="arrow">→</span>
+    <span class="step">③ Critique</span>
+    <span class="arrow">→</span>
+    <span class="step">④ Recommendations</span>
+  </div>
+
+  <!-- 6-panel storyboard grid -->
+  <div class="storyboard-grid">
+    {% for panel in panels %}
+    <div class="panel-card">
+      <div class="panel-header">
+        <span class="panel-number">Panel {{ panel.panel_number }} / {{ panels|length }}</span>
+      </div>
+      <div class="panel-body">
+        <div class="panel-field">
+          <span class="field-label">Action</span>
+          <p class="field-value">{{ panel.action }}</p>
+        </div>
+        <div class="panel-field">
+          <span class="field-label">Context</span>
+          <p class="field-value">{{ panel.context }}</p>
+        </div>
+        <div class="panel-field">
+          <span class="field-label">Emotion</span>
+          <span class="emotion-badge">{{ panel.emotion }}</span>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- next step -->
+  <div class="action-section">
+    <p>Storyboard generated with {{ panels|length }} panels. Ready to run the UX Critic Agent to identify pain points backed by UX research?</p>
+    <div class="btn-row">
+      <a href="/" class="btn btn-ghost">← Start Over</a>
+      <form action="/critique" method="POST" style="display:inline;">
+        <button type="submit" class="btn">Run UX Critique →</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

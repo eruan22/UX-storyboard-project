@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Recommendations — UX Generator</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #0f0e0c;
+      --paper:  #f5f0e8;
+      --accent: #d4580a;
+      --muted:  #7a7060;
+      --border: #ccc5b2;
+      --panel-bg: #fff9f0;
+      --green:  #3a6b2a;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      min-height: 100vh;
+      padding: 48px 20px 80px;
+    }
+
+    /* ── page header ── */
+    .page-header {
+      max-width: 780px;
+      margin: 0 auto 36px;
+    }
+
+    .eyebrow {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── pipeline ── */
+    .pipeline {
+      max-width: 780px;
+      margin: 0 auto 36px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .pipeline .step {
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: var(--panel-bg);
+    }
+
+    .pipeline .step.done   { border-color: var(--accent); color: var(--accent); opacity: 0.55; text-decoration: line-through; }
+    .pipeline .step.active { border-color: var(--green);  color: var(--green);  background: #f0f7ed; font-weight: bold; }
+    .pipeline .arrow { color: var(--border); font-size: 14px; }
+
+    /* ── recommendation list ── */
+    .rec-list {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      counter-reset: rec-counter;
+    }
+
+    .rec-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      box-shadow: 3px 3px 0 var(--border);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 56px 1fr;
+    }
+
+    .rec-index {
+      background: var(--ink);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1rem;
+      font-weight: bold;
+      writing-mode: vertical-lr;
+      letter-spacing: 0.05em;
+      padding: 16px 0;
+    }
+
+    .rec-body {
+      padding: 20px 22px;
+    }
+
+    .rec-meta {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .rfield { margin-bottom: 14px; }
+    .rfield:last-child { margin-bottom: 0; }
+
+    .rfield-label {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .rfield p {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    .rfield .rec-text {
+      font-size: 0.93rem;
+      line-height: 1.7;
+      color: var(--ink);
+      padding: 12px 16px;
+      background: #f0f7ed;
+      border-left: 3px solid var(--green);
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ── complete banner ── */
+    .complete-banner {
+      max-width: 780px;
+      margin: 32px auto 0;
+      padding: 24px 28px;
+      background: #f0f7ed;
+      border: 1px solid #b5d4a8;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .complete-banner .check {
+      font-size: 1.6rem;
+    }
+
+    .complete-banner div p {
+      font-size: 0.88rem;
+      color: var(--green);
+      line-height: 1.6;
+    }
+
+    .complete-banner div strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 4px;
+      color: var(--green);
+    }
+
+    /* ── action section ── */
+    .action-section {
+      max-width: 780px;
+      margin: 20px auto 0;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 13px 26px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn:hover { background: #b84b06; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover { background: var(--border); color: var(--ink); }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <span class="eyebrow">Design Agent — Complete</span>
+    <h1>Design <span>Recommendations</span></h1>
+    <p class="subtitle">{{ recommendations|length }} actionable improvement(s) generated for the identified pain points.</p>
+  </div>
+
+  <!-- pipeline -->
+  <div class="pipeline">
+    <span class="step done">① Input</span>
+    <span class="arrow">→</span>
+    <span class="step done">② Storyboard</span>
+    <span class="arrow">→</span>
+    <span class="step done">③ Critique</span>
+    <span class="arrow">→</span>
+    <span class="step active">④ Recommendations</span>
+  </div>
+
+  <!-- recommendations -->
+  <div class="rec-list">
+    {% for r in recommendations %}
+    <div class="rec-card">
+      <div class="rec-index">R{{ loop.index }}</div>
+      <div class="rec-body">
+        <div class="rec-meta">Panel {{ r.panel }}</div>
+
+        <div class="rfield">
+          <span class="rfield-label">Pain Point</span>
+          <p>{{ r.pain_point }}</p>
+        </div>
+
+        <div class="rfield">
+          <span class="rfield-label">Recommendation</span>
+          <p class="rec-text">{{ r.recommendation }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- complete banner -->
+  <div class="complete-banner">
+    <span class="check">✓</span>
+    <div>
+      <strong>Pipeline Complete</strong>
+      <p>All three agents have finished. The storyboard has been generated, critiqued with UX research, and improved with design recommendations.</p>
+    </div>
+  </div>
+
+  <!-- actions -->
+  <div class="action-section">
+    <a href="/" class="btn">← New Storyboard</a>
+  </div>
+
+</body>
+</html>
