@@ -10,7 +10,7 @@
     :root {
       --ink:    #0f0e0c;
       --paper:  #f5f0e8;
-      --accent: #d4580a;
+      --accent: #9678b0;
       --muted:  #7a7060;
       --border: #ccc5b2;
       --panel-bg: #fff9f0;
@@ -34,8 +34,8 @@
     }
 
     .eyebrow {
-      font-family: "Courier New", Courier, monospace;
-      font-size: 10px;
+      font-family: Georgia, Courier, monospace;
+      font-size: 14px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--accent);
@@ -64,15 +64,16 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 11px;
+      font-family: Georgia, Courier, monospace;
+      font-style: italic;
+      font-size: 13px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
     .pipeline .step {
-      padding: 5px 12px;
+      padding: 15px 28px;
       border: 1px solid var(--border);
       border-radius: 2px;
       background: var(--panel-bg);
@@ -109,7 +110,7 @@
     }
 
     .stat-box .stat-label {
-      font-family: "Courier New", Courier, monospace;
+      font-family: Georgia, Courier, monospace;
       font-size: 9px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -152,15 +153,16 @@
     }
 
     .critique-header .panel-ref {
-      font-family: "Courier New", Courier, monospace;
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
       font-size: 10px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--ink);
     }
 
     .severity-badge {
-      font-family: "Courier New", Courier, monospace;
+      font-family: Georgia, Courier, monospace;
       font-size: 9px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -179,7 +181,8 @@
     .cfield:last-child { margin-bottom: 0; }
 
     .cfield-label {
-      font-family: "Courier New", Courier, monospace;
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
       font-size: 9px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -222,10 +225,10 @@
       color: #fff;
       border: none;
       border-radius: 2px;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      font-family: Georgia, Courier, monospace;
+      font-style: italic;
+      font-size: 14px;
+      text-transform: capitalize;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
@@ -233,7 +236,7 @@
       white-space: nowrap;
     }
 
-    .btn:hover { background: #b84b06; }
+    .btn:hover { background: #9678b068; }
 
     .btn-ghost {
       background: transparent;
@@ -256,13 +259,13 @@
 
   <!-- pipeline -->
   <div class="pipeline">
-    <span class="step done">① Input</span>
+    <span class="step done">1. Input</span>
     <span class="arrow">→</span>
-    <span class="step done">② Storyboard</span>
+    <span class="step done">2. Storyboard</span>
     <span class="arrow">→</span>
-    <span class="step active">③ Critique</span>
+    <span class="step active">3. Critique</span>
     <span class="arrow">→</span>
-    <span class="step">④ Recommendations</span>
+    <span class="step">4. Recommendations</span>
   </div>
 
   <!-- severity summary -->

@@ -10,7 +10,7 @@
     :root {
       --ink:    #0f0e0c;
       --paper:  #f5f0e8;
-      --accent: #d4580a;
+      --accent: #9577b0;
       --muted:  #7a7060;
       --border: #ccc5b2;
       --panel-bg: #fff9f0;
@@ -43,10 +43,9 @@
     .page-header h1 span { color: var(--accent); }
 
     .meta {
-      font-family: "Courier New", Courier, monospace;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+      font-family: Georgia, Courier, monospace;
+      font-size: 16px;
+      text-transform: capitalize;
       color: var(--muted);
       line-height: 1.9;
       text-align: right;
@@ -59,15 +58,16 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 11px;
+      font-family: Georgia, Courier, monospace;
+      font-style: italic;
+      font-size: 13px;
       letter-spacing: 0.1em;
-      text-transform: uppercase;
+      text-transform: capitalize;
       color: var(--muted);
     }
 
     .pipeline .step {
-      padding: 5px 12px;
+      padding: 15px 28px;
       border: 1px solid var(--border);
       border-radius: 2px;
       background: var(--panel-bg);
@@ -101,7 +101,7 @@
 
     .panel-header {
       background: var(--ink);
-      color: #fff;
+      color: #ffffff;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -109,8 +109,9 @@
     }
 
     .panel-number {
-      font-family: "Courier New", Courier, monospace;
-      font-size: 11px;
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
+      font-size: 12px;
       letter-spacing: 0.1em;
       opacity: 0.6;
     }
@@ -126,7 +127,8 @@
     .panel-field:last-child { margin-bottom: 0; }
 
     .field-label {
-      font-family: "Courier New", Courier, monospace;
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
       font-size: 9px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -179,10 +181,10 @@
       color: #fff;
       border: none;
       border-radius: 2px;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      font-family: Georgia, Courier, monospace;
+      font-style: italic;
+      font-size: 14px;
+      text-transform: capitalize;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
@@ -190,7 +192,7 @@
       white-space: nowrap;
     }
 
-    .btn:hover { background: #b84b06; }
+    .btn:hover { background: #9678b068; }
 
     .btn-ghost {
       background: transparent;
@@ -216,13 +218,13 @@
 
   <!-- pipeline -->
   <div class="pipeline">
-    <span class="step done">① Input</span>
+    <span class="step done">1. Input</span>
     <span class="arrow">→</span>
-    <span class="step active">② Storyboard</span>
+    <span class="step active">2. Storyboard</span>
     <span class="arrow">→</span>
-    <span class="step">③ Critique</span>
+    <span class="step">3. Critique</span>
     <span class="arrow">→</span>
-    <span class="step">④ Recommendations</span>
+    <span class="step">4. Recommendations</span>
   </div>
 
   <!-- 6-panel storyboard grid -->

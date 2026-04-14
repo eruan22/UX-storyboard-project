@@ -10,7 +10,7 @@
     :root {
       --ink:    #0f0e0c;
       --paper:  #f5f0e8;
-      --accent: #d4580a;
+      --accent: #9678b0;
       --muted:  #7a7060;
       --border: #ccc5b2;
       --panel-bg: #fff9f0;
@@ -32,11 +32,11 @@
     }
 
     .eyebrow {
-      font-family: "Courier New", Courier, monospace;
-      font-size: 10px;
+      font-family: Georgia, Courier, monospace;
+      font-size: 14px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--accent);
       display: block;
       margin-bottom: 10px;
     }
@@ -62,15 +62,16 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 11px;
+      font-family: Georgia, Courier, monospace;
+      font-style: italic;
+      font-size: 13px;
       letter-spacing: 0.1em;
-      text-transform: uppercase;
+      text-transform: capitalize;
       color: var(--muted);
     }
 
     .pipeline .step {
-      padding: 5px 12px;
+      padding: 15px 28px;
       border: 1px solid var(--border);
       border-radius: 2px;
       background: var(--panel-bg);
@@ -106,7 +107,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: "Courier New", Courier, monospace;
+      font-family: Georgia, Courier, monospace;
       font-size: 1rem;
       font-weight: bold;
       writing-mode: vertical-lr;
@@ -119,11 +120,12 @@
     }
 
     .rec-meta {
-      font-family: "Courier New", Courier, monospace;
-      font-size: 9px;
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
+      font-size: 12px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--ink);
       margin-bottom: 14px;
     }
 
@@ -131,7 +133,8 @@
     .rfield:last-child { margin-bottom: 0; }
 
     .rfield-label {
-      font-family: "Courier New", Courier, monospace;
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
       font-size: 9px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -202,10 +205,10 @@
       color: #fff;
       border: none;
       border-radius: 2px;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      font-family: Georgia, Courier, monospace;
+      font-style: italic;
+      font-size: 14px;
+      text-transform: capitalize;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
@@ -213,7 +216,7 @@
       white-space: nowrap;
     }
 
-    .btn:hover { background: #b84b06; }
+    .btn:hover { background: #9678b068; }
 
     .btn-ghost {
       background: transparent;
@@ -227,20 +230,20 @@
 <body>
 
   <div class="page-header">
-    <span class="eyebrow">Design Agent — Complete</span>
+    <span class="eyebrow">Design Agent</span>
     <h1>Design <span>Recommendations</span></h1>
     <p class="subtitle">{{ recommendations|length }} actionable improvement(s) generated for the identified pain points.</p>
   </div>
 
   <!-- pipeline -->
   <div class="pipeline">
-    <span class="step done">① Input</span>
+    <span class="step done">1. Input</span>
     <span class="arrow">→</span>
-    <span class="step done">② Storyboard</span>
+    <span class="step done">2. Storyboard</span>
     <span class="arrow">→</span>
-    <span class="step done">③ Critique</span>
+    <span class="step done">3. Critique</span>
     <span class="arrow">→</span>
-    <span class="step active">④ Recommendations</span>
+    <span class="step active">4. Recommendations</span>
   </div>
 
   <!-- recommendations -->

@@ -12,7 +12,7 @@
     :root {
       --ink:    #0f0e0c;
       --paper:  #f5f0e8;
-      --accent: #d4580a;
+      --accent: #9577B0;
       --muted:  #7a7060;
       --border: #ccc5b2;
       --panel-bg: #fff9f0;
@@ -37,8 +37,9 @@
     }
 
     header .eyebrow {
-      font-family: "Courier New", Courier, monospace;
-      font-size: 11px;
+      font-family: "Antique Olive", sans-serif, monospace;
+      font-size: 14px;
+      font-weight: bold;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--accent);
@@ -72,15 +73,16 @@
       align-items: center;
       gap: 8px;
       margin-bottom: 44px;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 11px;
+      font-family: Georgia, sans-serif, monospace;
+      font-style:italic;
+      font-size: 13px;
       letter-spacing: 0.1em;
-      text-transform: uppercase;
+      text-transform: capitalize;
       color: var(--muted);
     }
 
     .pipeline .step {
-      padding: 5px 12px;
+      padding: 15px 28px;
       border: 1px solid var(--border);
       border-radius: 2px;
       background: var(--panel-bg);
@@ -121,10 +123,10 @@
 
     label {
       display: block;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      font-family: Georgia, sans-serif, monospace;
+      font-weight: bold;
+      font-size: 14px;
+      text-transform: capitalize;
       color: var(--muted);
       margin-bottom: 7px;
     }
@@ -166,25 +168,26 @@
       color: #fff;
       border: none;
       border-radius: 2px;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      font-family: Georgia, sans-serif, monospace;
+      font-style: italic;
+      font-size: 18px;
+      text-transform: capitalize;
       cursor: pointer;
       transition: background 0.15s, transform 0.1s;
     }
 
-    button[type="submit"]:hover  { background: #b84b06; }
+    button[type="submit"]:hover  { background: #9678b068; }
     button[type="submit"]:active { transform: scale(0.99); }
 
     /* ── footer ── */
     footer {
       margin-top: 52px;
-      font-family: "Courier New", Courier, monospace;
+      font-family: Georgia, sans-serif, monospace;
+      font-style: italic;
       font-size: 10px;
       letter-spacing: 0.15em;
       color: var(--border);
-      text-transform: uppercase;
+      text-transform: capitalize;
     }
   </style>
 </head>
@@ -198,13 +201,13 @@
 
   <!-- pipeline indicator -->
   <div class="pipeline">
-    <span class="step active">① Input</span>
+    <span class="step active">1. Input</span>
     <span class="arrow">→</span>
-    <span class="step">② Storyboard</span>
+    <span class="step">2. Storyboard</span>
     <span class="arrow">→</span>
-    <span class="step">③ Critique</span>
+    <span class="step">3. Critique</span>
     <span class="arrow">→</span>
-    <span class="step">④ Recommendations</span>
+    <span class="step">4. Recommendations</span>
   </div>
 
   <div class="card">
