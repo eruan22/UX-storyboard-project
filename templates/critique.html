@@ -27,9 +27,8 @@
       padding: 48px 20px 80px;
     }
 
-    /* ── page header ── */
     .page-header {
-      max-width: 780px;
+      max-width: 900px;
       margin: 0 auto 36px;
     }
 
@@ -59,7 +58,7 @@
 
     /* ── pipeline ── */
     .pipeline {
-      max-width: 780px;
+      max-width: 900px;
       margin: 0 auto 36px;
       display: flex;
       align-items: center;
@@ -77,15 +76,34 @@
       border: 1px solid var(--border);
       border-radius: 2px;
       background: var(--panel-bg);
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
     }
 
-    .pipeline .step.done   { border-color: var(--accent); color: var(--accent); opacity: 0.55; text-decoration: line-through; }
-    .pipeline .step.active { border-color: var(--accent); color: var(--accent); background: #fdf3ec; font-weight: bold; }
+    .pipeline .step.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: #fdf3ec;
+      font-weight: bold;
+    }
+
+    .pipeline a.step {
+      border-color: var(--accent);
+      color: var(--accent);
+      opacity: 0.6;
+      text-decoration: line-through;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .pipeline a.step:hover { opacity: 1; text-decoration: none; }
+
     .pipeline .arrow { color: var(--border); font-size: 14px; }
 
     /* ── summary bar ── */
     .summary-bar {
-      max-width: 780px;
+      max-width: 900px;
       margin: 0 auto 28px;
       display: flex;
       gap: 16px;
@@ -123,25 +141,95 @@
 
     /* ── critique list ── */
     .critique-list {
-      max-width: 780px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 18px;
     }
 
+    /* card = panel preview (left) + critique content (right) */
     .critique-card {
       background: var(--panel-bg);
       border: 1px solid var(--border);
-      border-left: 4px solid var(--border);
       border-radius: 3px;
       box-shadow: 2px 2px 0 var(--border);
       overflow: hidden;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      border-left: 4px solid var(--border);
     }
 
     .critique-card.high   { border-left-color: var(--high); }
     .critique-card.medium { border-left-color: var(--medium); }
     .critique-card.low    { border-left-color: var(--low); }
+
+    @media (max-width: 660px) {
+      .critique-card { grid-template-columns: 1fr; }
+    }
+
+    /* ── left: panel preview ── */
+    .panel-preview {
+      background: #f5efe4;
+      border-right: 1px solid var(--border);
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .panel-preview-label {
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    .panel-preview-num {
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
+      font-size: 13px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .preview-field { }
+
+    .preview-field-label {
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .preview-field p {
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
+    .emotion-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      color: var(--accent);
+      font-size: 0.73rem;
+      font-style: italic;
+    }
+
+    /* ── right: critique content ── */
+    .critique-right {
+      display: flex;
+      flex-direction: column;
+    }
 
     .critique-header {
       display: flex;
@@ -199,7 +287,7 @@
 
     /* ── action section ── */
     .action-section {
-      max-width: 780px;
+      max-width: 900px;
       margin: 36px auto 0;
       padding: 26px 30px;
       background: var(--panel-bg);
@@ -257,18 +345,20 @@
     <p class="subtitle">{{ critiques|length }} issue(s) identified across the storyboard, backed by UX research.</p>
   </div>
 
-  <!-- pipeline -->
   <div class="pipeline">
-    <span class="step done">1. Input</span>
+    <a href="/" class="step">1. Input</a>
     <span class="arrow">→</span>
-    <span class="step done">2. Storyboard</span>
+    <a href="/storyboard" class="step">2. Storyboard</a>
     <span class="arrow">→</span>
     <span class="step active">3. Critique</span>
     <span class="arrow">→</span>
-    <span class="step">4. Recommendations</span>
+    {% if has_recommendations %}
+      <a href="/recommendations" class="step">4. Recommendations</a>
+    {% else %}
+      <span class="step">4. Recommendations</span>
+    {% endif %}
   </div>
 
-  <!-- severity summary -->
   <div class="summary-bar">
     <div class="stat-box">
       <div class="stat-num">{{ critiques|length }}</div>
@@ -294,29 +384,62 @@
     </div>
   </div>
 
-  <!-- critique cards -->
   <div class="critique-list">
     {% for c in critiques %}
+      {# find the matching panel by panel number #}
+      {% set matched_panel = namespace(panel=none) %}
+      {% for p in panels %}
+        {% if p.panel_number == c.panel %}
+          {% set matched_panel.panel = p %}
+        {% endif %}
+      {% endfor %}
+
     <div class="critique-card {{ c.severity | lower }}">
-      <div class="critique-header">
-        <span class="panel-ref">Panel {{ c.panel }}</span>
-        <span class="severity-badge {{ c.severity | lower }}">{{ c.severity }} Severity</span>
-      </div>
-      <div class="critique-body">
-        <div class="cfield">
-          <span class="cfield-label">Pain Point</span>
-          <p>{{ c.pain_point }}</p>
+
+      <!-- left: panel preview -->
+      <div class="panel-preview">
+        <div>
+          <div class="panel-preview-label">Panel</div>
+          <div class="panel-preview-num">{{ c.panel }} / {{ panels|length }}</div>
         </div>
-        <div class="cfield">
-          <span class="cfield-label">Research-Backed Reason</span>
-          <p>{{ c.reason }}</p>
+        {% if matched_panel.panel %}
+        <div class="preview-field">
+          <span class="preview-field-label">Action</span>
+          <p>{{ matched_panel.panel.action }}</p>
+        </div>
+        <div class="preview-field">
+          <span class="preview-field-label">Context</span>
+          <p>{{ matched_panel.panel.context }}</p>
+        </div>
+        <div class="preview-field">
+          <span class="preview-field-label">Emotion</span>
+          <span class="emotion-badge">{{ matched_panel.panel.emotion }}</span>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- right: critique content -->
+      <div class="critique-right">
+        <div class="critique-header">
+          <span class="panel-ref">Pain Point Analysis</span>
+          <span class="severity-badge {{ c.severity | lower }}">{{ c.severity }} Severity</span>
+        </div>
+        <div class="critique-body">
+          <div class="cfield">
+            <span class="cfield-label">Pain Point</span>
+            <p>{{ c.pain_point }}</p>
+          </div>
+          <div class="cfield">
+            <span class="cfield-label">Research-Backed Reason</span>
+            <p>{{ c.reason }}</p>
+          </div>
         </div>
       </div>
+
     </div>
     {% endfor %}
   </div>
 
-  <!-- next step -->
   <div class="action-section">
     <p>Critique complete. The Design Agent will now generate actionable recommendations for each identified pain point.</p>
     <div class="btn-row">

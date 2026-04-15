@@ -24,7 +24,6 @@
       padding: 48px 20px 80px;
     }
 
-    /* ── page header ── */
     .page-header {
       max-width: 900px;
       margin: 0 auto 36px;
@@ -71,10 +70,29 @@
       border: 1px solid var(--border);
       border-radius: 2px;
       background: var(--panel-bg);
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
     }
 
-    .pipeline .step.done   { border-color: var(--accent); color: var(--accent); text-decoration: line-through; opacity: 0.6; }
-    .pipeline .step.active { border-color: var(--accent); color: var(--accent); background: #fdf3ec; font-weight: bold; }
+    .pipeline .step.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: #fdf3ec;
+      font-weight: bold;
+    }
+
+    .pipeline a.step {
+      border-color: var(--accent);
+      color: var(--accent);
+      opacity: 0.6;
+      text-decoration: line-through;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .pipeline a.step:hover { opacity: 1; text-decoration: none; }
+
     .pipeline .arrow { color: var(--border); font-size: 14px; }
 
     /* ── storyboard grid ── */
@@ -90,7 +108,6 @@
       .storyboard-grid { grid-template-columns: 1fr; }
     }
 
-    /* ── individual panel card ── */
     .panel-card {
       background: var(--panel-bg);
       border: 1px solid var(--border);
@@ -116,14 +133,9 @@
       opacity: 0.6;
     }
 
-    .panel-body {
-      padding: 16px 18px 20px;
-    }
+    .panel-body { padding: 16px 18px 20px; }
 
-    .panel-field {
-      margin-bottom: 13px;
-    }
-
+    .panel-field { margin-bottom: 13px; }
     .panel-field:last-child { margin-bottom: 0; }
 
     .field-label {
@@ -216,18 +228,24 @@
     </div>
   </div>
 
-  <!-- pipeline -->
   <div class="pipeline">
-    <span class="step done">1. Input</span>
+    <a href="/" class="step">1. Input</a>
     <span class="arrow">→</span>
     <span class="step active">2. Storyboard</span>
     <span class="arrow">→</span>
-    <span class="step">3. Critique</span>
+    {% if has_critique %}
+      <a href="/critique" class="step">3. Critique</a>
+    {% else %}
+      <span class="step">3. Critique</span>
+    {% endif %}
     <span class="arrow">→</span>
-    <span class="step">4. Recommendations</span>
+    {% if has_recommendations %}
+      <a href="/recommendations" class="step">4. Recommendations</a>
+    {% else %}
+      <span class="step">4. Recommendations</span>
+    {% endif %}
   </div>
 
-  <!-- 6-panel storyboard grid -->
   <div class="storyboard-grid">
     {% for panel in panels %}
     <div class="panel-card">
@@ -252,7 +270,6 @@
     {% endfor %}
   </div>
 
-  <!-- next step -->
   <div class="action-section">
     <p>Storyboard generated with {{ panels|length }} panels. Ready to run the UX Critic Agent to identify pain points backed by UX research?</p>
     <div class="btn-row">

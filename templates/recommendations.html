@@ -25,9 +25,8 @@
       padding: 48px 20px 80px;
     }
 
-    /* ── page header ── */
     .page-header {
-      max-width: 780px;
+      max-width: 900px;
       margin: 0 auto 36px;
     }
 
@@ -57,7 +56,7 @@
 
     /* ── pipeline ── */
     .pipeline {
-      max-width: 780px;
+      max-width: 900px;
       margin: 0 auto 36px;
       display: flex;
       align-items: center;
@@ -75,22 +74,41 @@
       border: 1px solid var(--border);
       border-radius: 2px;
       background: var(--panel-bg);
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
     }
 
-    .pipeline .step.done   { border-color: var(--accent); color: var(--accent); opacity: 0.55; text-decoration: line-through; }
-    .pipeline .step.active { border-color: var(--green);  color: var(--green);  background: #f0f7ed; font-weight: bold; }
+    .pipeline .step.active {
+      border-color: var(--green);
+      color: var(--green);
+      background: #f0f7ed;
+      font-weight: bold;
+    }
+
+    .pipeline a.step {
+      border-color: var(--accent);
+      color: var(--accent);
+      opacity: 0.6;
+      text-decoration: line-through;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .pipeline a.step:hover { opacity: 1; text-decoration: none; }
+
     .pipeline .arrow { color: var(--border); font-size: 14px; }
 
-    /* ── recommendation list ── */
+    /* ── rec list ── */
     .rec-list {
-      max-width: 780px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 20px;
-      counter-reset: rec-counter;
     }
 
+    /* card = panel preview (left) + recommendation (right) */
     .rec-card {
       background: var(--panel-bg);
       border: 1px solid var(--border);
@@ -98,25 +116,81 @@
       box-shadow: 3px 3px 0 var(--border);
       overflow: hidden;
       display: grid;
-      grid-template-columns: 56px 1fr;
+      grid-template-columns: 220px 1fr;
     }
 
-    .rec-index {
-      background: var(--ink);
-      color: #fff;
+    @media (max-width: 660px) {
+      .rec-card { grid-template-columns: 1fr; }
+    }
+
+    /* ── left: panel preview ── */
+    .panel-preview {
+      background: #f5efe4;
+      border-right: 1px solid var(--border);
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .panel-preview-label {
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    .panel-preview-num {
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
+      font-size: 13px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .preview-field-label {
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .preview-field p {
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
+    .emotion-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      color: var(--accent);
+      font-size: 0.73rem;
+      font-style: italic;
+    }
+
+    /* ── right: recommendation content ── */
+    .rec-right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rec-header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-family: Georgia, Courier, monospace;
-      font-size: 1rem;
-      font-weight: bold;
-      writing-mode: vertical-lr;
-      letter-spacing: 0.05em;
-      padding: 16px 0;
-    }
-
-    .rec-body {
-      padding: 20px 22px;
+      justify-content: space-between;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      background: #fffdf9;
     }
 
     .rec-meta {
@@ -126,8 +200,21 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--ink);
-      margin-bottom: 14px;
     }
+
+    .rec-index-badge {
+      font-family: Georgia, Courier, monospace;
+      font-weight: bold;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      background: var(--paper);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .rec-body { padding: 18px 20px; }
 
     .rfield { margin-bottom: 14px; }
     .rfield:last-child { margin-bottom: 0; }
@@ -161,7 +248,7 @@
 
     /* ── complete banner ── */
     .complete-banner {
-      max-width: 780px;
+      max-width: 900px;
       margin: 32px auto 0;
       padding: 24px 28px;
       background: #f0f7ed;
@@ -173,15 +260,7 @@
       flex-wrap: wrap;
     }
 
-    .complete-banner .check {
-      font-size: 1.6rem;
-    }
-
-    .complete-banner div p {
-      font-size: 0.88rem;
-      color: var(--green);
-      line-height: 1.6;
-    }
+    .complete-banner .check { font-size: 1.6rem; }
 
     .complete-banner div strong {
       display: block;
@@ -190,9 +269,15 @@
       color: var(--green);
     }
 
+    .complete-banner div p {
+      font-size: 0.88rem;
+      color: var(--green);
+      line-height: 1.6;
+    }
+
     /* ── action section ── */
     .action-section {
-      max-width: 780px;
+      max-width: 900px;
       margin: 20px auto 0;
       display: flex;
       gap: 12px;
@@ -235,40 +320,72 @@
     <p class="subtitle">{{ recommendations|length }} actionable improvement(s) generated for the identified pain points.</p>
   </div>
 
-  <!-- pipeline -->
   <div class="pipeline">
-    <span class="step done">1. Input</span>
+    <a href="/" class="step">1. Input</a>
     <span class="arrow">→</span>
-    <span class="step done">2. Storyboard</span>
+    <a href="/storyboard" class="step">2. Storyboard</a>
     <span class="arrow">→</span>
-    <span class="step done">3. Critique</span>
+    <a href="/critique" class="step">3. Critique</a>
     <span class="arrow">→</span>
     <span class="step active">4. Recommendations</span>
   </div>
 
-  <!-- recommendations -->
   <div class="rec-list">
     {% for r in recommendations %}
+      {# find the matching panel by panel number #}
+      {% set matched_panel = namespace(panel=none) %}
+      {% for p in panels %}
+        {% if p.panel_number == r.panel %}
+          {% set matched_panel.panel = p %}
+        {% endif %}
+      {% endfor %}
+
     <div class="rec-card">
-      <div class="rec-index">R{{ loop.index }}</div>
-      <div class="rec-body">
-        <div class="rec-meta">Panel {{ r.panel }}</div>
 
-        <div class="rfield">
-          <span class="rfield-label">Pain Point</span>
-          <p>{{ r.pain_point }}</p>
+      <!-- left: panel preview -->
+      <div class="panel-preview">
+        <div>
+          <div class="panel-preview-label">Panel</div>
+          <div class="panel-preview-num">{{ r.panel }} / {{ panels|length }}</div>
         </div>
+        {% if matched_panel.panel %}
+        <div class="preview-field">
+          <span class="preview-field-label">Action</span>
+          <p>{{ matched_panel.panel.action }}</p>
+        </div>
+        <div class="preview-field">
+          <span class="preview-field-label">Context</span>
+          <p>{{ matched_panel.panel.context }}</p>
+        </div>
+        <div class="preview-field">
+          <span class="preview-field-label">Emotion</span>
+          <span class="emotion-badge">{{ matched_panel.panel.emotion }}</span>
+        </div>
+        {% endif %}
+      </div>
 
-        <div class="rfield">
-          <span class="rfield-label">Recommendation</span>
-          <p class="rec-text">{{ r.recommendation }}</p>
+      <!-- right: recommendation content -->
+      <div class="rec-right">
+        <div class="rec-header">
+          <span class="rec-meta">Recommendation</span>
+          <span class="rec-index-badge">R{{ loop.index }}</span>
+        </div>
+        <div class="rec-body">
+          <div class="rfield">
+            <span class="rfield-label">Pain Point</span>
+            <p>{{ r.pain_point }}</p>
+          </div>
+          <div class="rfield">
+            <span class="rfield-label">Design Recommendation</span>
+            <p class="rec-text">{{ r.recommendation }}</p>
+          </div>
         </div>
       </div>
+
     </div>
     {% endfor %}
   </div>
 
-  <!-- complete banner -->
   <div class="complete-banner">
     <span class="check">✓</span>
     <div>
@@ -277,7 +394,6 @@
     </div>
   </div>
 
-  <!-- actions -->
   <div class="action-section">
     <a href="/" class="btn">← New Storyboard</a>
   </div>

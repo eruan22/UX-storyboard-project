@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UX Storyboard Generator</title>
   <style>
-    /* ── reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── palette ── */
     :root {
       --ink:    #0f0e0c;
       --paper:  #f5f0e8;
@@ -18,7 +16,6 @@
       --panel-bg: #fff9f0;
     }
 
-    /* ── base ── */
     body {
       background: var(--paper);
       color: var(--ink);
@@ -30,7 +27,6 @@
       padding: 60px 20px 80px;
     }
 
-    /* ── header ── */
     header {
       text-align: center;
       margin-bottom: 48px;
@@ -55,9 +51,7 @@
       color: var(--ink);
     }
 
-    header h1 span {
-      color: var(--accent);
-    }
+    header h1 span { color: var(--accent); }
 
     header p {
       margin-top: 16px;
@@ -67,14 +61,14 @@
       line-height: 1.6;
     }
 
-    /* ── pipeline indicator ── */
+    /* ── pipeline ── */
     .pipeline {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 44px;
       font-family: Georgia, sans-serif, monospace;
-      font-style:italic;
+      font-style: italic;
       font-size: 13px;
       letter-spacing: 0.1em;
       text-transform: capitalize;
@@ -86,6 +80,9 @@
       border: 1px solid var(--border);
       border-radius: 2px;
       background: var(--panel-bg);
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
     }
 
     .pipeline .step.active {
@@ -93,6 +90,17 @@
       color: var(--accent);
       background: #fdf3ec;
     }
+
+    /* clickable completed steps */
+    .pipeline a.step {
+      border-color: var(--accent);
+      color: var(--accent);
+      opacity: 0.6;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .pipeline a.step:hover { opacity: 1; }
 
     .pipeline .arrow { color: var(--border); font-size: 14px; }
 
@@ -116,10 +124,7 @@
       letter-spacing: -0.01em;
     }
 
-    /* ── form elements ── */
-    .field {
-      margin-bottom: 24px;
-    }
+    .field { margin-bottom: 24px; }
 
     label {
       display: block;
@@ -147,9 +152,7 @@
     }
 
     input[type="text"]:focus,
-    textarea:focus {
-      border-color: var(--accent);
-    }
+    textarea:focus { border-color: var(--accent); }
 
     .hint {
       display: block;
@@ -159,7 +162,6 @@
       font-style: italic;
     }
 
-    /* ── submit button ── */
     button[type="submit"] {
       margin-top: 8px;
       width: 100%;
@@ -179,7 +181,6 @@
     button[type="submit"]:hover  { background: #9678b068; }
     button[type="submit"]:active { transform: scale(0.99); }
 
-    /* ── footer ── */
     footer {
       margin-top: 52px;
       font-family: Georgia, sans-serif, monospace;
@@ -199,15 +200,26 @@
     <p>Enter a user persona, goal, and product to generate a storyboard, identify pain points, and receive design recommendations.</p>
   </header>
 
-  <!-- pipeline indicator -->
   <div class="pipeline">
     <span class="step active">1. Input</span>
     <span class="arrow">→</span>
-    <span class="step">2. Storyboard</span>
+    {% if has_storyboard %}
+      <a href="/storyboard" class="step">2. Storyboard</a>
+    {% else %}
+      <span class="step">2. Storyboard</span>
+    {% endif %}
     <span class="arrow">→</span>
-    <span class="step">3. Critique</span>
+    {% if has_critique %}
+      <a href="/critique" class="step">3. Critique</a>
+    {% else %}
+      <span class="step">3. Critique</span>
+    {% endif %}
     <span class="arrow">→</span>
-    <span class="step">4. Recommendations</span>
+    {% if has_recommendations %}
+      <a href="/recommendations" class="step">4. Recommendations</a>
+    {% else %}
+      <span class="step">4. Recommendations</span>
+    {% endif %}
   </div>
 
   <div class="card">
