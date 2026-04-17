@@ -3,7 +3,7 @@ import json
 
 from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import PydanticOutputParser
-from utils.chroma_setup import basic_retrieve
+from utils.chroma_setup import basic_retrieve, get_vectorstore
 from utils.rag_triad import run_rag_triad
 from agents.journey_agent import run_journey_agent
 from agents.ux_critic_agent import run_critic_agent
@@ -11,19 +11,11 @@ from agents.design_agent import run_design_agent
 from models.schemas import StoryboardInput, StoryboardOutput, Panel, CriticOutput, PanelCritique, DesignOutput, DesignRecommendation
 
 # LLM SET UP
-USE_REMOTE = False
+USE_REMOTE = True
 sys.path.insert(0, '../inclass')
 from llm_utils import get_llm, get_chat_model
 
-model = get_llm(use_remote=USE_REMOTE, model="qwen3:4b")
-chat_model = get_chat_model(use_remote=USE_REMOTE, model="qwen3:4b")
-
-# initialize LLM
-llm = ChatOllama(
-    model="qwen-3:4b",
-    temperature=0.7,
-    #base_url=OLLAMA_BASE_URL
-)
+chat_model = get_chat_model(use_remote=USE_REMOTE, model="qwen3.5:4b")
 
 # LOAD SAMPLE DATA
 with open("rag_triad_sample_inputs.json", "r") as f:
@@ -40,7 +32,8 @@ for i, sample in enumerate(SAMPLE_INPUTS):
     storyboard_output = run_journey_agent(user_input, chat_model)
 
     # retrieve docs
-    retrieved_docs = basic_retrieve(storyboard_output.panels, top_k=5)
+    vector_store = get_vectorstore()
+    retrieved_docs = basic_retrieve(storyboard_output.panels, vector_store, top_k=5)
 
     # critic agent
     print("\nRunning Critic Agent...")

@@ -6,7 +6,6 @@ from urllib import response
 from urllib import response
 
 from langchain_core.prompts import PromptTemplate
-from sympy import re
 from langchain_core.output_parsers import StrOutputParser
 
 # BUILD CONTEXT RELEVANCE CHAIN
@@ -107,29 +106,21 @@ def run_rag_triad(panels, retrieved_docs, answer, chat_model):
     answer = json.dumps([c.dict() for c in answer.critiques], indent=2)
 
     # invoke the chains
-    context_relevance_score = context_relevance_chain.invoke({
+    context_relevance_score = parse_output(context_relevance_chain.invoke({
         "question": "What are the UX pain points in the storyboard panels?",
         "context": "\n\n".join(retrieved_docs)
-    })
-    faithfulness_score = faithfulness_chain.invoke({
+    }))
+    faithfulness_score = parse_output(faithfulness_chain.invoke({
         "context": "\n\n".join(retrieved_docs),
         "answer": answer
-    })
-    answer_relevance_score = answer_relevance_chain.invoke({
+    }))
+    answer_relevance_score = parse_output(answer_relevance_chain.invoke({
         "question": "What are the UX pain points in the storyboard panels?",
         "answer": answer
-    })
+    }))
 
     return {
         "context_relevance": context_relevance_score,
         "faithfulness": faithfulness_score,
         "answer_relevance": answer_relevance_score
     }
-
-# run rag triad 20 times
-def eval_prompts(panels, retrieved_docs, answer, chat_model, iterations=20):
-    results = []
-    for i in range(iterations):
-        result = run_rag_triad(panels, retrieved_docs, answer, chat_model)
-        results.append(result)
-    return results

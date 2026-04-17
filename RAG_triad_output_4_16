@@ -1,0 +1,204 @@
+--Running RAG triad evaluation for sample 1--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 5.0
+--Running RAG triad evaluation for sample 2--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 5.0
+Answer Relevance Score: 5.0
+--Running RAG triad evaluation for sample 3--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 3.0
+--Running RAG triad evaluation for sample 4--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+--Running RAG triad evaluation for sample 5--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 2.0
+Faithfulness Score: 2.0
+Answer Relevance Score: 1.0
+--Running RAG triad evaluation for sample 6--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 2.0
+Answer Relevance Score: 5.0
+--Running RAG triad evaluation for sample 7--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+--Running RAG triad evaluation for sample 8--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 5.0
+--Running RAG triad evaluation for sample 9--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 3.0
+--Running RAG triad evaluation for sample 10--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 2.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+--Running RAG triad evaluation for sample 11--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+--Running RAG triad evaluation for sample 12--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+--Running RAG triad evaluation for sample 13--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 2.0
+Faithfulness Score: 0.0
+Answer Relevance Score: 1.0
+--Running RAG triad evaluation for sample 14--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 5.0
+--Running RAG triad evaluation for sample 15--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 3.0
+--Running RAG triad evaluation for sample 16--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+--Running RAG triad evaluation for sample 17--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 5.0
+--Running RAG triad evaluation for sample 18--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+--Running RAG triad evaluation for sample 19--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 4.0
+--Running RAG triad evaluation for sample 20--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 0.0
+
+Average Context Relevance Score: 1.15
+Average Faithfulness Score: 1.25
+Average Answer Relevance Score: 2.6
