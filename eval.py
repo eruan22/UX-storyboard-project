@@ -23,6 +23,7 @@ with open("rag_triad_sample_inputs.json", "r") as f:
 
 # run RAG triad evaluation
 triad_results = []
+length_rec = []
 for i, sample in enumerate(SAMPLE_INPUTS):
     print(f"--Running RAG triad evaluation for sample {i+1}--")
 
@@ -48,6 +49,15 @@ for i, sample in enumerate(SAMPLE_INPUTS):
     print(f"Faithfulness Score: {triad_result['faithfulness']}")
     print(f"Answer Relevance Score: {triad_result['answer_relevance']}")
 
+    # design agent
+    print("\nRunning Design Agent...")
+    design_output = run_design_agent(storyboard_output.panels, critic_output, chat_model)
+    recommendations = design_output.recommendations
+    for r in recommendations:
+        length = len(r.recommendation.split())
+        length_rec.append(length)
+        print(length)
+
 # print average scores across all samples
 avg_context_relevance = sum(r["context_relevance"] for r in triad_results) / len(triad_results)
 avg_faithfulness = sum(r["faithfulness"] for r in triad_results) / len(triad_results)
@@ -55,3 +65,6 @@ avg_answer_relevance = sum(r["answer_relevance"] for r in triad_results) / len(t
 print(f"\nAverage Context Relevance Score: {avg_context_relevance}")
 print(f"Average Faithfulness Score: {avg_faithfulness}")
 print(f"Average Answer Relevance Score: {avg_answer_relevance}")
+
+avg_length = sum(length_rec) / len(length_rec)
+print(f"\nAverage number of words in Recommendation: {avg_length}")

@@ -1,0 +1,351 @@
+--Running RAG triad evaluation for sample 1--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 2.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+38
+39
+--Running RAG triad evaluation for sample 2--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 5.0
+Answer Relevance Score: 5.0
+
+Running Design Agent...
+design agent finished!
+61
+--Running RAG triad evaluation for sample 3--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 3.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 5.0
+
+Running Design Agent...
+design agent finished!
+39
+37
+41
+43
+42
+36
+--Running RAG triad evaluation for sample 4--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 2.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+32
+28
+30
+32
+34
+35
+--Running RAG triad evaluation for sample 5--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 5.0
+Answer Relevance Score: 5.0
+
+Running Design Agent...
+design agent finished!
+52
+--Running RAG triad evaluation for sample 6--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 0.0
+
+Running Design Agent...
+design agent finished!
+34
+34
+37
+40
+39
+41
+--Running RAG triad evaluation for sample 7--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 3.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+27
+37
+31
+36
+31
+33
+--Running RAG triad evaluation for sample 8--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+42
+--Running RAG triad evaluation for sample 9--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 2.0
+Faithfulness Score: 0.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+26
+29
+26
+37
+33
+35
+--Running RAG triad evaluation for sample 10--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+25
+21
+22
+24
+24
+25
+--Running RAG triad evaluation for sample 11--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+31
+29
+35
+28
+27
+26
+--Running RAG triad evaluation for sample 12--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 2.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 5.0
+
+Running Design Agent...
+design agent finished!
+40
+43
+41
+47
+51
+--Running RAG triad evaluation for sample 13--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 0.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+32
+25
+29
+26
+32
+--Running RAG triad evaluation for sample 14--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+45
+38
+42
+32
+38
+38
+--Running RAG triad evaluation for sample 15--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+33
+35
+28
+33
+--Running RAG triad evaluation for sample 16--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 3.0
+
+Running Design Agent...
+design agent finished!
+52
+--Running RAG triad evaluation for sample 17--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 2.0
+Answer Relevance Score: 5.0
+
+Running Design Agent...
+design agent finished!
+44
+45
+45
+47
+44
+--Running RAG triad evaluation for sample 18--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+33
+23
+26
+22
+27
+30
+--Running RAG triad evaluation for sample 19--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+30
+39
+31
+35
+29
+36
+--Running RAG triad evaluation for sample 20--
+Running Journey Agent...
+journey agent finished!
+Loading existing ChromaDB...
+
+Running Critic Agent...
+ux critic agent finished!
+Context Relevance Score: 1.0
+Faithfulness Score: 1.0
+Answer Relevance Score: 1.0
+
+Running Design Agent...
+design agent finished!
+
+Average Context Relevance Score: 1.35
+Average Faithfulness Score: 1.4
+Average Answer Relevance Score: 2.05
+
+Average number of words in Recommendation: 34.705882352941174
